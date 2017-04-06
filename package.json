@@ -9,12 +9,16 @@
     "> 1%"
   ],
   "scripts": {
-    "start": "babel-node src",
+    "start": "babel-node src/server",
     "test": "eslint src/*.js && flow && jest --coverage",
     "precommit": "yarn test",
     "prepush": "yarn test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "common-tags": "^1.4.0",
+    "compression": "^1.6.2",
+    "express": "^4.15.2"
+  },
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-eslint": "^7.2.1",
