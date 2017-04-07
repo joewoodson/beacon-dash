@@ -9,10 +9,14 @@
     "> 1%"
   ],
   "scripts": {
-    "start": "babel-node src/server",
+    "start": "yarn dev:start",
+    "dev:start": "nodemon --ignore lib --exec babel-node src/server",
+    "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
+    "prod:start": "NODE_ENV=production pm2 start lib/server && pm2 logs",
+    "prod:stop": "pm2 delete server",
     "test": "eslint src/*.js && flow && jest --coverage",
     "precommit": "yarn test",
-    "prepush": "yarn test"
+    "prepush": "yarn test && yarn prod:build"
   },
   "dependencies": {
     "common-tags": "^1.4.0",
@@ -38,6 +42,9 @@
     "eslint-plugin-standard": "^2.2.0",
     "flow-bin": "^0.43.1",
     "husky": "^0.13.3",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "nodemon": "^1.11.0",
+    "pm2": "^2.4.4",
+    "rimraf": "^2.6.1"
   }
 }
