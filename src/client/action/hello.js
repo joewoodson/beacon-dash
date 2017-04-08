@@ -26,6 +26,6 @@ export const sayHelloAsync = (num: number) => (dispatch: Function) => {
       dispatch(sayHelloAsyncSuccess(data.serverMessage))
     })
     .catch(() => {
-      dispatch(sayHelloAsyncFailure)
+      dispatch(sayHelloAsyncFailure())
     })
 }
