@@ -2,6 +2,7 @@
 
 import $ from 'jquery'
 import React from 'react'
+import injectSheet from 'react-jss'
 import { Link, NavLink } from 'react-router-dom'
 import { APP_NAME } from '../config'
 import {
@@ -11,13 +12,19 @@ import {
   NOT_FOUND_DEMO_PAGE_ROUTE,
 } from '../routes'
 
+const styles = {
+  customNavBar: {
+    backgroundColor: 'slategrey !important',
+  },
+}
+
 const handleNavLinkClick = () => {
   $('body').scrollTop(0)
   $('.js-navbar-collapse').collapse('hide')
 }
 
-const Nav = () =>
-  <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+const Nav = ({ classes }: { classes: Object }) =>
+  <nav className={`${classes.customNavBar} navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse`}>
     <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
     </button>
@@ -38,4 +45,4 @@ const Nav = () =>
     </div>
   </nav>
 
-export default Nav
+export default injectSheet(styles)(Nav)
