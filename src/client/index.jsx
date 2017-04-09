@@ -10,12 +10,18 @@ import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { BrowserRouter } from 'react-router-dom'
 import thunkMiddleware from 'redux-thunk'
-import setUpSocket from './socket'
+import $ from 'jquery'
+import Tether from 'tether'
 
+import setUpSocket from './socket'
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
+
+window.jQuery = $
+window.Tether = Tether
+require('bootstrap')
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
