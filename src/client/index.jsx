@@ -13,7 +13,6 @@ import thunkMiddleware from 'redux-thunk'
 import $ from 'jquery'
 import Tether from 'tether'
 
-import setUpSocket from './socket'
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
@@ -59,5 +58,3 @@ if (module.hot) {
 const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
 // flow-disable-next-line
 jssServerSide.parentNode.removeChild(jssServerSide)
-
-setUpSocket(store)
