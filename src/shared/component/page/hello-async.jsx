@@ -9,7 +9,7 @@ import HelloAsyncButton from '../../container/hello-async-button'
 const title = 'Async Hello Page'
 
 const HelloAsyncPage = () =>
-  <div className="container mt-4">
+  <div>
     <Helmet
       title={title}
       meta={[
@@ -17,13 +17,9 @@ const HelloAsyncPage = () =>
         { property: 'og:title', content: title },
       ]}
     />
-    <div className="row">
-      <div className="col-12">
-        <h1>{title}</h1>
-        <MessageAsync />
-        <HelloAsyncButton />
-      </div>
-    </div>
+    <h1>{title}</h1>
+    <MessageAsync />
+    <HelloAsyncButton />
   </div>
 
 export default HelloAsyncPage

@@ -7,7 +7,7 @@ import HelloButton from '../../container/hello-button'
 const title = 'Hello Page'
 
 const HelloPage = () =>
-  <div className="container mt-4">
+  <div>
     <Helmet
       title={title}
       meta={[
@@ -15,13 +15,9 @@ const HelloPage = () =>
         { property: 'og:title', content: title },
       ]}
     />
-    <div className="row">
-      <div className="col-12">
-        <h1>{title}</h1>
-        <Message />
-        <HelloButton />
-      </div>
-    </div>
+    <h1>{title}</h1>
+    <Message />
+    <HelloButton />
   </div>
 
 export default HelloPage

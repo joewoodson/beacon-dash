@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "bootstrap": "4.0.0-alpha.6",
     "common-tags": "^1.4.0",
     "compression": "^1.6.2",
     "express": "^4.15.2",
