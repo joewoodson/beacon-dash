@@ -13,6 +13,9 @@ import thunkMiddleware from 'redux-thunk'
 import $ from 'jquery'
 import Tether from 'tether'
 
+// import 'grommet/grommet-hpinc.min.css'
+import 'grommet/scss/vanilla/index.scss'
+
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
