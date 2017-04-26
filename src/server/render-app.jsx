@@ -9,7 +9,7 @@ import { SheetsRegistry, SheetsRegistryProvider } from 'react-jss'
 
 import initStore from './init-store'
 import App from './../shared/app'
-import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
+import { APP_CONTAINER_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 
 const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
@@ -32,7 +32,6 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
         ${head.title}
         ${head.meta}
         <link rel="stylesheet" href="${STATIC_PATH}/css/grommet.min.css">
-        <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
       </head>
       <body>
         <div class="${APP_CONTAINER_CLASS}">${appHtml}</div>
