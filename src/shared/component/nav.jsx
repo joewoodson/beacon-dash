@@ -1,6 +1,5 @@
 // @flow
 
-import $ from 'jquery'
 import React from 'react'
 import injectSheet from 'react-jss'
 import { Link, NavLink } from 'react-router-dom'
@@ -18,11 +17,6 @@ const styles = {
   },
 }
 
-const handleNavLinkClick = () => {
-  $('body').scrollTop(0)
-  $('.js-navbar-collapse').collapse('hide')
-}
-
 const Nav = ({ classes }: { classes: Object }) =>
   <nav className={`${classes.customNavBar} navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse`}>
     <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
@@ -38,7 +32,7 @@ const Nav = ({ classes }: { classes: Object }) =>
           { route: NOT_FOUND_DEMO_PAGE_ROUTE, label: '404 Demo' },
         ].map(link => (
           <li className="nav-item" key={link.route}>
-            <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
+            <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact>{link.label}</NavLink>
           </li>
         ))}
       </ul>
