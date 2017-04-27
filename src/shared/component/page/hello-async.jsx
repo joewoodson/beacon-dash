@@ -4,7 +4,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import MessageAsync from '../../container/message-async'
-import HelloAsyncButton from '../../container/hello-async-button'
 
 const title = 'Async Hello Page'
 
@@ -19,7 +18,6 @@ const HelloAsyncPage = () =>
     />
     <h1>{title}</h1>
     <MessageAsync />
-    <HelloAsyncButton />
   </div>
 
 export default HelloAsyncPage
