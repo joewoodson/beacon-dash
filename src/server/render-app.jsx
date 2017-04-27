@@ -31,6 +31,7 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
       <head>
         ${head.title}
         ${head.meta}
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,700" rel="stylesheet">
         <link rel="stylesheet" href="${STATIC_PATH}/css/grommet.min.css">
       </head>
       <body>

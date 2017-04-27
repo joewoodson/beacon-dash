@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom'
 import thunkMiddleware from 'redux-thunk'
 import Tether from 'tether'
 
-// import 'grommet/grommet-hpinc.min.css'
+// import grommet styles
 import 'grommet/scss/vanilla/index.scss'
 
 import App from '../shared/app'
