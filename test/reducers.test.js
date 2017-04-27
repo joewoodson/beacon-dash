@@ -8,12 +8,18 @@ import {
   sayHelloAsyncFailure,
 } from '../src/shared/action/hello'
 
+import { navActivate } from '../src/shared/action/sidebar-nav'
+
 import helloReducer from '../src/shared/reducer/hello'
 
+import navReducer from '../src/shared/reducer/sidebar-nav'
+
 let helloState
+let navState
 
 beforeEach(() => {
   helloState = helloReducer(undefined, {})
+  navState = navReducer(undefined, {})
 })
 
 chai.use(chaiImmutable)
@@ -60,6 +66,20 @@ describe('Reducers', () => {
         helloState = helloReducer(helloState, sayHelloAsyncFailure())
         helloState.should.be.an('object')
         helloState.should.have.property('messageAsync', 'No message received, please check your connection')
+      })
+    })
+  })
+  describe('Nav Reducer', () => {
+    describe('handle default', () => {
+      it('should have prop active set to true by default', () => {
+        navState.should.be.an('object')
+        navState.should.have.property('active', true)
+      })
+    })
+    describe('handle close', () => {
+      it('should change active property to false', () => {
+        navState = navReducer(navState, navActivate(false))
+        navState.should.have.property('active', false)
       })
     })
   })

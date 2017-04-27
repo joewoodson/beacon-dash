@@ -1,0 +1,23 @@
+@import '../../node_modules/grommet/scss/vanilla/index.scss';
+
+body {
+  background: $brand-color;
+}
+
+.hide {
+  width: 0;
+  max-width: 0;
+  padding: 0;
+  transition: width .8s ease-out;
+  button {
+    opacity: 0;
+  }
+}
+
+.show {
+  transition: width .8s ease-out;
+  button {
+    opacity: 1;
+    transition: opacity .1s ease-out .2s;
+  }
+}

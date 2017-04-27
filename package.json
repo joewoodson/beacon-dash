@@ -16,6 +16,7 @@
     "prod:start": "heroku local",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "test": "yarn lint && flow && jest --coverage",
+    "test:mocha": "mocha --compilers js:babel-core/register",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build",
     "heroku-postbuild": "yarn prod:build"

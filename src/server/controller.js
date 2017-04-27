@@ -1,6 +1,8 @@
 // @flow
 
-export const homePage = () => null
+export const homePage = () => ({
+  nav: { active: true },
+})
 
 export const helloPage = () => ({
   hello: { message: 'Server-side preloaded message' },

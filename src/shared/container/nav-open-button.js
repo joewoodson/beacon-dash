@@ -1,15 +1,15 @@
 // @flow
 import { connect } from 'react-redux'
+import Button from 'grommet/components/Button'
 
-import { sayHelloAsync } from '../action/hello'
-import Button from '../component/button'
+import { navActivate } from '../action/sidebar-nav'
 
 const mapStateToProps = () => ({
-  label: 'Say hello asynchronously and send 13',
+  label: 'Open',
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: () => { dispatch(sayHelloAsync(13)) },
+  onClick: () => { dispatch(navActivate(true)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button)

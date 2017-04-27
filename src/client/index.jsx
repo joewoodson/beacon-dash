@@ -12,11 +12,12 @@ import { BrowserRouter } from 'react-router-dom'
 import thunkMiddleware from 'redux-thunk'
 import Tether from 'tether'
 
-// import 'grommet/grommet-hpinc.min.css'
-import 'grommet/scss/vanilla/index.scss'
+// import 'grommet/scss/vanilla/index.scss'
+import '../../public/scss/style.scss'
 
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
+import navReducer from '../shared/reducer/sidebar-nav'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -28,7 +29,7 @@ const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  { hello: helloReducer }),
+  { hello: helloReducer, nav: navReducer }),
   { hello: Immutable.fromJS(preloadedState.hello) },
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
