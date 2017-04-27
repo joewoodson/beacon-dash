@@ -21,7 +21,6 @@ const HomePage = () =>
       ]}
     />
     <Split
-      fixed
       flex="right"
     >
       <SidebarNav />

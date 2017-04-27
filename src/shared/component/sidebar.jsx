@@ -1,30 +1,27 @@
 // @flow
 
 import React from 'react'
-import Button from 'grommet/components/Button'
 import Sidebar from 'grommet/components/Sidebar'
+import Close from 'grommet/components/icons/base/Close'
 
 type Props = {
-  label: string,
   active: boolean,
   handleClick: Function,
 }
 
-const SidebarNav = ({ label, active, handleClick }: Props) => {
-  const sidebarClassNames = active ? 'show' : 'hide'
+const SidebarNav = ({ active, handleClick }: Props) => {
+  let sidebarClassNames = active ? 'show' : 'hide'
+  sidebarClassNames += ' sidebar-nav'
 
   return (
     <Sidebar
       className={sidebarClassNames}
       size="small"
       colorIndex="brand"
-      align="center"
-      justify="center"
-      full="vertical"
-      pad={{ horizontal: 'medium' }}
+      align="end"
+      pad="small"
     >
-      <Button
-        label={label}
+      <Close
         onClick={handleClick}
       />
     </Sidebar>

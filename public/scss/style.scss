@@ -4,20 +4,24 @@ body {
   background: $brand-color;
 }
 
-.hide {
+.sidebar-nav.hide {
   width: 0;
-  max-width: 0;
   padding: 0;
-  transition: width .8s ease-out;
-  button {
+  transition: width .35s ease-out, padding .35s ease-out .1s;
+  svg {
     opacity: 0;
   }
 }
 
-.show {
-  transition: width .8s ease-out;
-  button {
+.sidebar-nav.show {
+  width: 240px;
+  transition: width .35s ease-out;
+  svg {
     opacity: 1;
     transition: opacity .1s ease-out .2s;
   }
+}
+
+.grommetux-split__column {
+  overflow-y:  hidden;
 }
