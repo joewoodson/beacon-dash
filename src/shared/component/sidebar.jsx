@@ -3,6 +3,7 @@
 import React from 'react'
 import Sidebar from 'grommet/components/Sidebar'
 import Close from 'grommet/components/icons/base/Close'
+import Button from 'grommet/components/Button'
 
 type Props = {
   active: boolean,
@@ -21,9 +22,7 @@ const SidebarNav = ({ active, handleClick }: Props) => {
       align="end"
       pad="small"
     >
-      <Close
-        onClick={handleClick}
-      />
+      <Button onClick={handleClick} icon={<Close />} />
     </Sidebar>
   )
 }

@@ -4,7 +4,7 @@ body {
   background: $brand-color;
 }
 
-.sidebar-nav.hide {
+.hide {
   width: 0;
   padding: 0;
   transition: width .35s ease-out, padding .35s ease-out .1s;
@@ -13,7 +13,7 @@ body {
   }
 }
 
-.sidebar-nav.show {
+.show {
   width: 240px;
   transition: width .35s ease-out;
   svg {

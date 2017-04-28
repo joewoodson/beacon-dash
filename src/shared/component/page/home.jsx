@@ -4,8 +4,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Split from 'grommet/components/Split'
 import Box from 'grommet/components/Box'
-import Headline from 'grommet/components/Headline'
-import Toast from 'grommet/components/icons/base/Toast'
+import Menu from 'grommet/components/icons/base/Menu'
 
 import NavOpenButton from '../../container/nav-open-button'
 import SidebarNav from '../../container/sidebar-nav'
@@ -25,16 +24,13 @@ const HomePage = () =>
     >
       <SidebarNav />
       <Box
-        align="center"
+        align="start"
         colorIndex="light-2"
-        justify="center"
+        justify="start"
         full="vertical"
-        pad={{ horizontal: 'large' }}
+        pad="small"
       >
-        <Headline>
-          <Toast size="large" /> {APP_NAME}
-        </Headline>
-        <NavOpenButton />
+        <NavOpenButton icon={<Menu />} />
       </Box>
     </Split>
   </div>

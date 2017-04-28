@@ -15,10 +15,11 @@ const mapDispatchToProps = dispatch => ({
 function mergeProps(stateProps, dispatchProps, ownProps) {
   const { active } = stateProps
 
+  const className = active ? 'hide' : ''
   const onClick = active ? null : () => { dispatchProps.onClick(true) }
 
   return Object.assign({}, ownProps, {
-    label: 'Open',
+    className,
     onClick,
   })
 }
