@@ -1,11 +1,12 @@
 // @flow
 
 import App from 'grommet/components/App'
-import React from 'react'
-import Helmet from 'react-helmet'
-import Split from 'grommet/components/Split'
 import Box from 'grommet/components/Box'
+import Header from 'grommet/components/Header'
+import Helmet from 'react-helmet'
 import Menu from 'grommet/components/icons/base/Menu'
+import React from 'react'
+import Split from 'grommet/components/Split'
 
 import NavOpenButton from '../../container/nav-open-button'
 import SidebarNav from '../../container/sidebar-nav'
@@ -26,13 +27,14 @@ const HomePage = () =>
       >
         <SidebarNav />
         <Box
-          align="start"
-          colorIndex="light-2"
-          justify="start"
+          colorIndex="light"
           full="vertical"
-          pad="small"
         >
-          <NavOpenButton icon={<Menu />} />
+          <Header
+            pad={{ horizontal: 'small' }}
+          >
+            <NavOpenButton icon={<Menu />} />
+          </Header>
         </Box>
       </Split>
     </App>
