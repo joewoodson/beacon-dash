@@ -1,11 +1,12 @@
 // @flow
 
-import React from 'react'
-import Helmet from 'react-helmet'
-import Split from 'grommet/components/Split'
+import App from 'grommet/components/App'
 import Box from 'grommet/components/Box'
-import Headline from 'grommet/components/Headline'
-import Toast from 'grommet/components/icons/base/Toast'
+import Header from 'grommet/components/Header'
+import Helmet from 'react-helmet'
+import Menu from 'grommet/components/icons/base/Menu'
+import React from 'react'
+import Split from 'grommet/components/Split'
 
 import NavOpenButton from '../../container/nav-open-button'
 import SidebarNav from '../../container/sidebar-nav'
@@ -20,24 +21,23 @@ const HomePage = () =>
         { property: 'og:title', content: APP_NAME },
       ]}
     />
-    <Split
-      fixed
-      flex="right"
-    >
-      <SidebarNav />
-      <Box
-        align="center"
-        colorIndex="light-2"
-        justify="center"
-        full="vertical"
-        pad={{ horizontal: 'large' }}
+    <App centered={false}>
+      <Split
+        flex="right"
       >
-        <Headline>
-          <Toast size="large" /> {APP_NAME}
-        </Headline>
-        <NavOpenButton />
-      </Box>
-    </Split>
+        <SidebarNav />
+        <Box
+          colorIndex="light"
+          full="vertical"
+        >
+          <Header
+            pad={{ horizontal: 'small' }}
+          >
+            <NavOpenButton icon={<Menu />} />
+          </Header>
+        </Box>
+      </Split>
+    </App>
   </div>
 
 export default HomePage
