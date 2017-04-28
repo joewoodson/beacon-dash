@@ -1,5 +1,6 @@
 // @flow
 
+import App from 'grommet/components/App'
 import React from 'react'
 import Helmet from 'react-helmet'
 import Split from 'grommet/components/Split'
@@ -19,20 +20,22 @@ const HomePage = () =>
         { property: 'og:title', content: APP_NAME },
       ]}
     />
-    <Split
-      flex="right"
-    >
-      <SidebarNav />
-      <Box
-        align="start"
-        colorIndex="light-2"
-        justify="start"
-        full="vertical"
-        pad="small"
+    <App centered={false}>
+      <Split
+        flex="right"
       >
-        <NavOpenButton icon={<Menu />} />
-      </Box>
-    </Split>
+        <SidebarNav />
+        <Box
+          align="start"
+          colorIndex="light-2"
+          justify="start"
+          full="vertical"
+          pad="small"
+        >
+          <NavOpenButton icon={<Menu />} />
+        </Box>
+      </Split>
+    </App>
   </div>
 
 export default HomePage
