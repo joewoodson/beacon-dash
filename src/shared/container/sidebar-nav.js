@@ -6,6 +6,7 @@ import Sidebar from '../component/sidebar'
 
 const mapStateToProps = state => ({
   label: 'Close',
+  menuName: 'Menu',
   active: state.nav.get('active'),
 })
 
