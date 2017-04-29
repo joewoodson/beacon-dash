@@ -7,7 +7,7 @@ import Menu from 'grommet/components/icons/base/Menu'
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Split from 'grommet/components/Split'
-import { Switch } from 'react-router'
+import { Redirect, Switch } from 'react-router'
 
 import { APP_NAME } from './config'
 import HomePage from './component/page/home'
@@ -34,7 +34,8 @@ const App = () =>
           <NavOpenButton icon={<Menu />} />
         </Header>
         <Switch>
-          <Route path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+          <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
+          <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
           <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
           <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
           <Route component={NotFoundPage} />
