@@ -1,7 +1,9 @@
 // @flow
 
 import GrommetApp from 'grommet/components/App'
+import Header from 'grommet/components/Header'
 import Helemt from 'react-helmet'
+import Menu from 'grommet/components/icons/base/Menu'
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Split from 'grommet/components/Split'
@@ -11,6 +13,7 @@ import { APP_NAME } from './config'
 import HomePage from './component/page/home'
 import HelloPage from './component/page/hello'
 import HelloAsyncPage from './component/page/hello-async'
+import NavOpenButton from './container/nav-open-button'
 import NotFoundPage from './component/page/not-found'
 import {
   HOME_PAGE_ROUTE,
@@ -25,6 +28,11 @@ const App = () =>
     <GrommetApp centered={false}>
       <Split flex="right">
         <SidebarNav />
+        <Header
+          pad={{ horizontal: 'small' }}
+        >
+          <NavOpenButton icon={<Menu />} />
+        </Header>
         <Switch>
           <Route path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
           <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
