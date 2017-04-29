@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   label: 'Close',
   menuName: 'Menu',
   active: state.nav.get('active'),
+  items: state.nav.get('items'),
 })
 
 const mapDispatchToProps = dispatch => ({
