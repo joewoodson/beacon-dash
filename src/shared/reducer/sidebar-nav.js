@@ -7,8 +7,21 @@ import {
   NAV_ACTIVATE,
 } from '../action/sidebar-nav'
 
+import {
+  HOME_PAGE_ROUTE,
+  HELLO_PAGE_ROUTE,
+  HELLO_ASYNC_PAGE_ROUTE,
+  NOT_FOUND_DEMO_PAGE_ROUTE,
+} from '../routes'
+
 const initialState = Immutable.fromJS({
   active: true,
+  items: [
+    { route: HOME_PAGE_ROUTE, label: 'Home' },
+    { route: HELLO_PAGE_ROUTE, label: 'Say Hello' },
+    { route: HELLO_ASYNC_PAGE_ROUTE, label: 'Say Hello Asynchronously' },
+    { route: NOT_FOUND_DEMO_PAGE_ROUTE, label: '404 Demo' },
+  ],
 })
 
 const navReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
