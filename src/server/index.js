@@ -14,6 +14,8 @@ import routing from './routing'
 import { WEB_PORT, STATIC_PATH } from '../shared/config'
 import { isProd } from '../shared/util'
 
+require('dotenv').config()
+
 const path = require('path')
 
 const app = express()

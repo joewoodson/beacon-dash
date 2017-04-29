@@ -27,6 +27,7 @@
     "common-tags": "^1.4.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "empty": "^0.10.1",
     "express": "^4.15.2",
     "express-flash": "^0.0.2",
