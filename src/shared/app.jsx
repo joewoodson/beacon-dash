@@ -26,7 +26,7 @@ const App = () =>
       <Split flex="right">
         <SidebarNav />
         <Switch>
-          <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+          <Route path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
           <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
           <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
           <Route component={NotFoundPage} />
