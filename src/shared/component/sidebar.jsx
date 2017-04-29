@@ -20,10 +20,10 @@ const SidebarNav = ({ active, menuName, handleClick }: Props) => {
   return (
     <Sidebar
       className={sidebarClassNames}
-      colorIndex="brand"
+      colorIndex="neutral-3-a"
     >
       <Header
-        colorIndex="grey-4-a"
+        colorIndex="brand"
         justify="between"
         pad={{ horizontal: 'medium' }}
       >
