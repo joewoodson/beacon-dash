@@ -29,7 +29,7 @@ app.use(STATIC_PATH, express.static('public'))
 // config for passport authentication
 app.use(cookieParser())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 // uncomment if using express-session
 app.use(session({
   secret: process.env.SECRET_KEY,

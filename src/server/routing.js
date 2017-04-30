@@ -13,6 +13,7 @@ import {
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
   helloEndpointRoute,
+  LOGIN_USER_ROUTE,
   REGISTER_USER_ROUTE,
 } from '../shared/routes'
 
@@ -61,6 +62,20 @@ export default (app: Object) => {
     // eslint-disable-next-line no-unused-vars
     .catch(err => handleResponse(res, 500, 'error')),
   )
+
+  app.post(LOGIN_USER_ROUTE, (req, res, next) => {
+    // eslint-disable-next-line no-unused-vars
+    passport.authenticate('local', (err, user, info) => {
+      if (err) { handleResponse(res, 500, 'error') }
+      if (!user) { handleResponse(res, 404, 'User not found') }
+      if (user) {
+        req.logIn(user, () => {
+          if (err) { handleResponse(res, 500, 'error') }
+          handleResponse(res, 200, 'success')
+        })
+      }
+    })(req, res, next)
+  })
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {

@@ -12,12 +12,8 @@ chai.use(chaiHttp)
 
 describe('Routes : Auth', () => {
   beforeEach(() =>
-    knex.migrate.rollback()
-    .then(() => knex.migrate.latest()),
-  )
-
-  afterEach(() =>
-    knex.migrate.rollback(),
+    knex.migrate.latest()
+    .then(() => knex.seed.run()),
   )
 
   describe('POST /auth/register', () => {
@@ -25,7 +21,7 @@ describe('Routes : Auth', () => {
       chai.request(server)
       .post('/auth/register')
       .send({
-        username: 'joe',
+        username: 'john',
         password: 'test',
       })
       .end((err, res) => {
