@@ -8,6 +8,7 @@ import flash from 'express-flash'
 import passport from 'passport'
 
 import { Server } from 'http'
+// eslint-disable-next-line no-unused-vars
 import session from 'express-session'
 
 import routing from './routing'
@@ -31,11 +32,11 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 // uncomment if using express-session
-app.use(session({
-  secret: process.env.SECRET_KEY,
-  resave: false,
-  saveUninitialized: true,
-}))
+// app.use(session({
+//   secret: process.env.SECRET_KEY,
+//   resave: false,
+//   saveUninitialized: true,
+// }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
