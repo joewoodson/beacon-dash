@@ -3,3 +3,4 @@ module.name_mapper.extension='scss' -> 'empty/object'
 suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
 [ignore]
 .*/node_modules/jss/.*
+.*/node_modules/bcryptjs/src/bower.json
