@@ -52,5 +52,39 @@ describe('Routes : Auth', () => {
         done()
       })
     })
+
+    it('should not login an unregistered user', (done) => {
+      chai.request(server)
+      .post('/auth/login')
+      .send({
+        username: 'jim',
+        password: 'test',
+      })
+      .end((err, res) => {
+        should.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(404)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('Username or password incorrect')
+        done()
+      })
+    })
+
+    it('should not login a user with the incorrect password', (done) => {
+      chai.request(server)
+      .post('/auth/login')
+      .send({
+        username: 'joe',
+        password: 'wrongpass',
+      })
+      .end((err, res) => {
+        should.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(404)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('Username or password incorrect')
+        done()
+      })
+    })
   })
 })

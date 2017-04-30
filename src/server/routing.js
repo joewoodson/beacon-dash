@@ -67,7 +67,7 @@ export default (app: Object) => {
     // eslint-disable-next-line no-unused-vars
     passport.authenticate('local', (err, user, info) => {
       if (err) { handleResponse(res, 500, 'error') }
-      if (!user) { handleResponse(res, 404, 'User not found') }
+      if (!user) { handleResponse(res, 404, 'Username or password incorrect') }
       if (user) {
         req.logIn(user, () => {
           if (err) { handleResponse(res, 500, 'error') }
