@@ -15,8 +15,8 @@
     "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && NODE_ENV=production webpack -p --progress",
     "prod:start": "heroku local",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
-    "test": "yarn lint && flow && _mocha --compilers js:babel-core/register",
-    "test:mocha": "mocha --compilers js:babel-core/register",
+    "test": "yarn lint && flow && nyc mocha --compilers js:babel-core/register",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build",
     "heroku-postbuild": "yarn prod:build"
@@ -38,6 +38,7 @@
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
     "node-sass": "^4.5.2",
+    "nyc": "^10.3.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "^15.4.2",

@@ -6,3 +6,4 @@ node_modules/
 /dist/
 /.env
 .eslintignore
+/.nyc_output
