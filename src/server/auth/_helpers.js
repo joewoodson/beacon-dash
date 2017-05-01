@@ -16,6 +16,15 @@ function createUser(req) {
   .returning('*')
 }
 
+function loginRedirect(req, res, next) {
+  if (req.user) {
+    return res.status(401).json(
+      { status: 'You are already logged in' },
+    )
+  }
+  return next()
+}
+
 function loginRequired(req, res, next) {
   if (!req.user) return res.status(401).json({ status: 'Not currently logged in' })
   return next()
@@ -24,5 +33,6 @@ function loginRequired(req, res, next) {
 module.exports = {
   comparePass,
   createUser,
+  loginRedirect,
   loginRequired,
 }

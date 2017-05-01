@@ -49,7 +49,7 @@ export default (app: Object) => {
   // Auth Routes - end
 
   // Auth Routes - begin
-  app.post(REGISTER_USER_ROUTE, (req, res, next) =>
+  app.post(REGISTER_USER_ROUTE, authHelpers.loginRedirect, (req, res, next) =>
     authHelpers.createUser(req, res)
     // eslint-disable-next-line no-unused-vars
     .then((response) => {
@@ -62,7 +62,7 @@ export default (app: Object) => {
     .catch(err => handleResponse(res, 500, 'error')),
   )
 
-  app.post(LOGIN_USER_ROUTE, (req, res, next) => {
+  app.post(LOGIN_USER_ROUTE, authHelpers.loginRedirect, (req, res, next) => {
     // eslint-disable-next-line no-unused-vars
     passport.authenticate('local', (err, user, info) => {
       if (err) { handleResponse(res, 500, 'error') }

@@ -39,6 +39,27 @@ describe('Routes : Auth', () => {
         done()
       })
     })
+
+    it('should throw an error if a user is logged in', (done) => {
+      passportStub.login({
+        username: 'joe',
+        password: 'test',
+      })
+      chai.request(server)
+      .post('/auth/register')
+      .send({
+        username: 'john',
+        password: 'test',
+      })
+      .end((err, res) => {
+        should.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(401)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('You are already logged in')
+        done()
+      })
+    })
   })
 
   describe('POST /auth/login', () => {
@@ -89,6 +110,27 @@ describe('Routes : Auth', () => {
         res.status.should.eql(404)
         res.type.should.eql('application/json')
         res.body.status.should.eql('Username or password incorrect')
+        done()
+      })
+    })
+
+    it('should throw an error if a user is logged in', (done) => {
+      passportStub.login({
+        username: 'joe',
+        password: 'test',
+      })
+      chai.request(server)
+      .post('/auth/login')
+      .send({
+        username: 'joe',
+        password: 'test',
+      })
+      .end((err, res) => {
+        should.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(401)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('You are already logged in')
         done()
       })
     })
