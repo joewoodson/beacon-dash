@@ -6,4 +6,4 @@ node_modules/
 /dist/
 /.env
 .eslintignore
-/knexfile.js
+/.nyc_output
