@@ -12,3 +12,6 @@ export const helloEndpointRoute = (num: ?number) => `/ajax/hello/${num || ':num'
 export const REGISTER_USER_ROUTE = '/auth/register'
 export const LOGIN_USER_ROUTE = '/auth/login'
 export const LOGOUT_USER_ROUTE = '/auth/logout'
+
+// Usesr routes
+export const USER_ROUTE = '/user'

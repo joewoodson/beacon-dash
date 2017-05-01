@@ -16,6 +16,7 @@ import {
   LOGIN_USER_ROUTE,
   LOGOUT_USER_ROUTE,
   REGISTER_USER_ROUTE,
+  USER_ROUTE,
 } from '../shared/routes'
 
 import renderApp from './render-app'
@@ -81,6 +82,13 @@ export default (app: Object) => {
     handleResponse(res, 200, 'success')
   })
   // Auth Routes - end
+
+  // User Routes - begin
+  // eslint-disable-next-line no-unused-vars
+  app.get(USER_ROUTE, authHelpers.loginRequired, (req, res, next) =>
+    handleResponse(res, 200, 'success'),
+  )
+  // User Routes -end
 
   app.get('*', (req, res) => {
     res.status(404).send(renderApp(req.url))

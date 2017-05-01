@@ -125,4 +125,35 @@ describe('Routes : Auth', () => {
       })
     })
   })
+
+  describe('GET /user', () => {
+    it('should return a success', (done) => {
+      passportStub.login({
+        username: 'joe',
+        password: 'test',
+      })
+      chai.request(server)
+      .get('/user')
+      .end((err, res) => {
+        should.not.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(200)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('success')
+        done()
+      })
+    })
+    it('should throw an error if a user is not logged in', (done) => {
+      chai.request(server)
+      .get('/user')
+      .end((err, res) => {
+        should.exist(err)
+        res.redirects.length.should.eql(0)
+        res.status.should.eql(401)
+        res.type.should.eql('application/json')
+        res.body.status.should.eql('Not currently logged in')
+        done()
+      })
+    })
+  })
 })
