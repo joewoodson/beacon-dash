@@ -11,6 +11,7 @@ import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
+  LOGIN_PAGE_ROUTE,
   NOT_FOUND_ROUTE,
 } from '../routes'
 
@@ -21,6 +22,7 @@ const initialState = Immutable.fromJS({
     { route: HELLO_PAGE_ROUTE, label: 'Say Hello' },
     { route: HELLO_ASYNC_PAGE_ROUTE, label: 'Say Hello Asynchronously' },
     { route: NOT_FOUND_ROUTE, label: '404 Demo' },
+    { route: LOGIN_PAGE_ROUTE, label: 'Login' },
   ],
 })
 

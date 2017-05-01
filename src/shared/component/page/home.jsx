@@ -17,7 +17,9 @@ const HomePage = () =>
     <Box
       colorIndex="light"
       full="vertical"
-    />
+    >
+      <h1>{APP_NAME}</h1>
+    </Box>
   </div>
 
 export default HomePage

@@ -7,12 +7,14 @@ import {
   helloPage,
   helloAsyncPage,
   helloEndpoint,
+  loginPage,
 } from './controller'
 import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
   helloEndpointRoute,
+  LOGIN_PAGE_ROUTE,
   LOGIN_USER_ROUTE,
   LOGOUT_USER_ROUTE,
   REGISTER_USER_ROUTE,
@@ -37,6 +39,10 @@ export default (app: Object) => {
 
   app.get(HELLO_ASYNC_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, helloAsyncPage()))
+  })
+
+  app.get(LOGIN_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, loginPage()))
   })
 
   app.get(helloEndpointRoute(), (req, res) => {

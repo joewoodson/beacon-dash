@@ -13,12 +13,14 @@ import { APP_NAME } from './config'
 import HomePage from './component/page/home'
 import HelloPage from './component/page/hello'
 import HelloAsyncPage from './component/page/hello-async'
+import LoginPage from './component/page/login'
 import NavOpenButton from './container/nav-open-button'
 import NotFoundPage from './component/page/not-found'
 import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
+  LOGIN_PAGE_ROUTE,
 } from './routes'
 import SidebarNav from './container/sidebar-nav'
 
@@ -36,6 +38,7 @@ const App = () =>
         <Switch>
           <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
           <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+          <Route exact path={LOGIN_PAGE_ROUTE} render={() => <LoginPage />} />
           <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
           <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
           <Route component={NotFoundPage} />

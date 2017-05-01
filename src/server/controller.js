@@ -4,6 +4,10 @@ export const homePage = () => ({
   nav: { active: true },
 })
 
+export const loginPage = () => ({
+  nav: { active: true },
+})
+
 export const helloPage = () => ({
   hello: { message: 'Server-side preloaded message' },
 })
