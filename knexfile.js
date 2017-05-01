@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 const knex = require('knex')
+const path = require('path')
 require('dotenv').config()
 
 module.exports = {
@@ -6,30 +8,30 @@ module.exports = {
     client: 'pg',
     connection: process.env.DATABASE_URL_TEST,
     migrations: {
-      directory: __dirname + '/src/server/db/migrations'
+      directory: path.join(__dirname, '/src/server/db/migrations'),
     },
     seeds: {
-      directory: __dirname + '/src/server/db/seeds/test'
-    }
+      directory: path.join(__dirname, '/src/server/db/seeds/test'),
+    },
   },
   development: {
     client: 'pg',
     connection: process.env.DATABASE_URL_DEV,
     migrations: {
-      directory: __dirname + '/src/server/db/migrations'
+      directory: path.join(__dirname, '/src/server/db/migrations'),
     },
     seeds: {
-      directory: __dirname + '/src/server/db/seeds/development'
-    }
+      directory: path.join(__dirname, '/src/server/db/seeds/development'),
+    },
   },
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: __dirname + '/src/server/db/migrations'
+      directory: path.join(__dirname, '/src/server/db/migrations'),
     },
     seeds: {
-      directory: __dirname + '/src/server/db/seeds/production'
-    }
-  }
-};
+      directory: path.join(__dirname, '/src/server/db/seeds/production'),
+    },
+  },
+}
