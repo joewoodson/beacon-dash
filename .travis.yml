@@ -1,4 +1,7 @@
 services: postgresql
+before_install:
+  - npm set progress=false
+  - npm install -g npm@latest
 before_script: psql -c 'create database passport_local_knex_test;' -U postgres
 language: node_js
 node_js: node
