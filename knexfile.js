@@ -1,3 +1,4 @@
+const knex = require('knex')
 require('dotenv').config()
 
 module.exports = {
