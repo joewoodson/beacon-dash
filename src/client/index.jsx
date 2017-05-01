@@ -16,6 +16,7 @@ import Tether from 'tether'
 import '../../public/scss/style.scss'
 
 import App from '../shared/app'
+import appReducer from '../shared/reducer/app'
 import helloReducer from '../shared/reducer/hello'
 import navReducer from '../shared/reducer/sidebar-nav'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
@@ -29,7 +30,7 @@ const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  { hello: helloReducer, nav: navReducer }),
+  { app: appReducer, hello: helloReducer, nav: navReducer }),
   { hello: Immutable.fromJS(preloadedState.hello) },
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 

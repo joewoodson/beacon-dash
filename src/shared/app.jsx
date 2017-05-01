@@ -50,7 +50,7 @@ const App = () =>
               </Switch>
             </Split>
         ) : (
-          <p>You are not logged in</p>
+          <Route render={() => <LoginPage />} />
         ))}
       />
     </GrommetApp>
