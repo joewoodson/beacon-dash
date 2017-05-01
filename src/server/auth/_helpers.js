@@ -16,7 +16,13 @@ function createUser(req) {
   .returning('*')
 }
 
+function loginRequired(req, res, next) {
+  if (!req.user) return res.status(401).json({ status: 'Not currently logged in' })
+  return next()
+}
+
 module.exports = {
   comparePass,
   createUser,
+  loginRequired,
 }

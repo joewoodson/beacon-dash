@@ -14,6 +14,7 @@ import {
   HELLO_ASYNC_PAGE_ROUTE,
   helloEndpointRoute,
   LOGIN_USER_ROUTE,
+  LOGOUT_USER_ROUTE,
   REGISTER_USER_ROUTE,
 } from '../shared/routes'
 
@@ -24,7 +25,7 @@ function handleResponse(res, code, statusMsg) {
 }
 
 export default (app: Object) => {
-  // Page Routes
+  // Page Routes -begin
   app.get(HOME_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, homePage()))
   })
@@ -44,12 +45,9 @@ export default (app: Object) => {
   app.get('/500', () => {
     throw Error('Fake Internal Server Error')
   })
+  // Auth Routes - end
 
-  app.get('*', (req, res) => {
-    res.status(404).send(renderApp(req.url))
-  })
-
-  // Auth Routes
+  // Auth Routes - begin
   app.post(REGISTER_USER_ROUTE, (req, res, next) =>
     authHelpers.createUser(req, res)
     // eslint-disable-next-line no-unused-vars
@@ -75,6 +73,17 @@ export default (app: Object) => {
         })
       }
     })(req, res, next)
+  })
+
+  // eslint-disable-next-line no-unused-vars
+  app.get(LOGOUT_USER_ROUTE, authHelpers.loginRequired, (req, res, next) => {
+    req.logout()
+    handleResponse(res, 200, 'success')
+  })
+  // Auth Routes - end
+
+  app.get('*', (req, res) => {
+    res.status(404).send(renderApp(req.url))
   })
 
   // eslint-disable-next-line no-unused-vars
