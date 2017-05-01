@@ -30,16 +30,16 @@ const App = () =>
   <div>
     <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     <GrommetApp centered={false}>
-      <Split flex="right">
-        <SidebarNav />
-        <Header
-          pad={{ horizontal: 'small' }}
-        >
-          <NavOpenButton icon={<Menu />} />
-        </Header>
-        <Route
-          render={() => (
-            isAuth ? (
+      <Route
+        render={() => (
+          isAuth ? (
+            <Split flex="right">
+              <SidebarNav />
+              <Header
+                pad={{ horizontal: 'small' }}
+              >
+                <NavOpenButton icon={<Menu />} />
+              </Header>
               <Switch>
                 <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
                 <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
@@ -48,11 +48,11 @@ const App = () =>
                 <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
                 <Route component={NotFoundPage} />
               </Switch>
-          ) : (
-            <p>You are not logged in</p>
-          ))}
-        />
-      </Split>
+            </Split>
+        ) : (
+          <p>You are not logged in</p>
+        ))}
+      />
     </GrommetApp>
   </div>
 
