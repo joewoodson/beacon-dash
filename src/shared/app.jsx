@@ -1,5 +1,6 @@
 // @flow
 
+import { connect } from 'react-redux'
 import GrommetApp from 'grommet/components/App'
 import Header from 'grommet/components/Header'
 import Helemt from 'react-helmet'
@@ -24,9 +25,16 @@ import {
 } from './routes'
 import SidebarNav from './container/sidebar-nav'
 
-const isAuth = false
+type Props = {
+  isAuth: boolean,
+}
 
-const App = () =>
+
+const mapStateToProps = state => ({
+  isAuth: state.app.get('isAuth'),
+})
+
+const App = ({ isAuth }: Props) =>
   <div>
     <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     <GrommetApp centered={false}>
@@ -56,4 +64,4 @@ const App = () =>
     </GrommetApp>
   </div>
 
-export default App
+export default connect(mapStateToProps)(App)

@@ -29,7 +29,7 @@ const initStore = (plainPartialState: ?Object) => {
       .merge(Immutable.fromJS(plainPartialState.nav))
   }
 
-  return createStore(combineReducers({ hello: helloReducer, nav: navReducer }),
+  return createStore(combineReducers({ app: appReducer, hello: helloReducer, nav: navReducer }),
     preloadedState, applyMiddleware(thunkMiddleware))
 }
 
