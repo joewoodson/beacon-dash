@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import React from 'react'
 
 import { APP_NAME } from '../../config'
+import LogoutButton from '../../container/logout-button'
 
 const HomePage = () =>
   <div>
@@ -19,6 +20,7 @@ const HomePage = () =>
       full="vertical"
     >
       <h1>{APP_NAME}</h1>
+      <LogoutButton />
     </Box>
   </div>
 
