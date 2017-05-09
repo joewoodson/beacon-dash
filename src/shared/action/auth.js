@@ -19,11 +19,11 @@ export const logoutUserRequest = createAction(LOGOUT_USER_REQUEST)
 export const logoutUserSuccess = createAction(LOGOUT_USER_SUCCESS)
 export const logoutUserFailure = createAction(LOGOUT_USER_FAILURE)
 
-export const loginUser = () => (dispatch: Function) => {
+export const loginUser = (username: string, password: string) => (dispatch: Function) => {
   dispatch(loginUserRequest())
   return axios.post(LOGIN_USER_ROUTE, {
-    username: 'joe',
-    password: 'test',
+    username,
+    password,
   })
     .then((res) => {
       if (res.status !== 200) throw Error(res.statusText)

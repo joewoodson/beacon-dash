@@ -3,13 +3,13 @@ import GrommetLoginForm from 'grommet/components/LoginForm'
 import React from 'react'
 
 type Props = {
-  handleClick: Function,
+  onSubmit: Function,
 }
 
-const LoginForm = ({ handleClick }: Props) =>
+const LoginForm = ({ onSubmit }: Props) =>
   <GrommetLoginForm
     align="start"
-    onSubmit={handleClick}
+    onSubmit={onSubmit}
     usernameType="text"
   />
 

@@ -5,7 +5,7 @@ import LoginForm from '../component/login-form'
 import { loginUser } from '../action/auth'
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: () => { dispatch(loginUser()) },
+  onSubmit: (fields) => { dispatch(loginUser(fields.username, fields.password)) },
 })
 
 export default connect(null, mapDispatchToProps)(LoginForm)
