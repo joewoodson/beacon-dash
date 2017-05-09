@@ -29,7 +29,6 @@ type Props = {
   isAuth: boolean,
 }
 
-
 const mapStateToProps = state => ({
   isAuth: state.app.get('isAuth'),
 })

@@ -1,6 +1,8 @@
 import Helmet from 'react-helmet'
 import React from 'react'
 
+import LoginForm from '../../container/login-form'
+
 const title = 'Login Page'
 
 const LoginPage = () =>
@@ -13,6 +15,7 @@ const LoginPage = () =>
       ]}
     />
     <h1>{title}</h1>
+    <LoginForm />
   </div>
 
 export default LoginPage
