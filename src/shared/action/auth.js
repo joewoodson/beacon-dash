@@ -1,6 +1,5 @@
 // @flow
 import axios from 'axios'
-import { browserHistory } from 'react-router'
 import { createAction } from 'redux-actions'
 import { LOGOUT_USER_ROUTE, LOGIN_USER_ROUTE } from '../../shared/routes'
 
@@ -27,8 +26,8 @@ export const loginUser = () => (dispatch: Function) => {
     password: 'test',
   })
     .then((res) => {
-      if (!res.ok) throw Error(res.statusText)
-      return res.json()
+      if (res.status !== 200) throw Error(res.statusText)
+      // return res.json()
     })
     .then(() => {
       dispatch(loginUserSuccess())
@@ -42,11 +41,10 @@ export const logoutUser = () => (dispatch: Function) => {
   dispatch(logoutUserRequest())
   return axios.get(LOGOUT_USER_ROUTE)
     .then((res) => {
-      if (!res.ok) throw Error(res.statusText)
-      return res.json()
+      if (res.status !== 200) throw Error(res.statusText)
+      // return res.json()
     })
     .then(() => {
-      browserHistory.push('/login')
       dispatch(logoutUserSuccess())
     })
     .catch(() => {
