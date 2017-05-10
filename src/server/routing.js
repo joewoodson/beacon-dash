@@ -7,12 +7,14 @@ import {
   helloPage,
   helloAsyncPage,
   helloEndpoint,
+  loginPage,
 } from './controller'
 import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
   helloEndpointRoute,
+  LOGIN_PAGE_ROUTE,
   LOGIN_USER_ROUTE,
   LOGOUT_USER_ROUTE,
   REGISTER_USER_ROUTE,
@@ -26,28 +28,6 @@ function handleResponse(res, code, statusMsg) {
 }
 
 export default (app: Object) => {
-  // Page Routes -begin
-  app.get(HOME_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, homePage()))
-  })
-
-  app.get(HELLO_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, helloPage()))
-  })
-
-  app.get(HELLO_ASYNC_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, helloAsyncPage()))
-  })
-
-  app.get(helloEndpointRoute(), (req, res) => {
-    res.json(helloEndpoint(req.params.num))
-  })
-
-  app.get('/500', () => {
-    throw Error('Fake Internal Server Error')
-  })
-  // Auth Routes - end
-
   // Auth Routes - begin
   app.post(REGISTER_USER_ROUTE, authHelpers.loginRedirect, (req, res, next) =>
     authHelpers.createUser(req, res)
@@ -89,6 +69,29 @@ export default (app: Object) => {
     handleResponse(res, 200, 'success'),
   )
   // User Routes -end
+
+  // Page Routes -begin
+  app.get(HOME_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, homePage()))
+  })
+
+  app.get(HELLO_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, helloPage()))
+  })
+
+  app.get(HELLO_ASYNC_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, helloAsyncPage()))
+  })
+
+  app.get(LOGIN_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, loginPage()))
+  })
+
+  app.get(helloEndpointRoute(), (req, res) => {
+    res.json(helloEndpoint(req.params.num))
+  })
+
+  // Page Routes - end
 
   app.get('*', (req, res) => {
     res.status(404).send(renderApp(req.url))

@@ -8,16 +8,22 @@ import {
   sayHelloAsyncFailure,
 } from '../src/shared/action/hello'
 
+import {
+  logoutUserSuccess,
+} from '../src/shared/action/auth'
+
 import { navActivate } from '../src/shared/action/sidebar-nav'
 
+import appReducer from '../src/shared/reducer/app'
 import helloReducer from '../src/shared/reducer/hello'
-
 import navReducer from '../src/shared/reducer/sidebar-nav'
 
+let appState
 let helloState
 let navState
 
 beforeEach(() => {
+  appState = appReducer(undefined, {})
   helloState = helloReducer(undefined, {})
   navState = navReducer(undefined, {})
 })
@@ -69,6 +75,7 @@ describe('Reducers', () => {
       })
     })
   })
+
   describe('Nav Reducer', () => {
     describe('handle default', () => {
       it('should have prop active set to true by default', () => {
@@ -80,6 +87,23 @@ describe('Reducers', () => {
       it('should change active property to false', () => {
         navState = navReducer(navState, navActivate(false))
         navState.should.have.property('active', false)
+      })
+    })
+  })
+
+  describe('App Reducer', () => {
+    describe('handle default', () => {
+      it('should have prop isAuth with value false', () => {
+        appState.should.be.an('object')
+        appState.should.have.property('isAuth', false)
+      })
+    })
+
+    describe('handle LOGOUT_USER_SUCCESS', () => {
+      it('should update messageAsync', () => {
+        appState = helloReducer(appState, logoutUserSuccess())
+        appState.should.be.an('object')
+        appState.should.have.property('isAuth', false)
       })
     })
   })

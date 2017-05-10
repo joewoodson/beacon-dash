@@ -9,6 +9,8 @@ import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { BrowserRouter } from 'react-router-dom'
+import { persistStore, autoRehydrate } from 'redux-persist'
+import immutableTransform from 'redux-persist-transform-immutable'
 import thunkMiddleware from 'redux-thunk'
 import Tether from 'tether'
 
@@ -16,6 +18,7 @@ import Tether from 'tether'
 import '../../public/scss/style.scss'
 
 import App from '../shared/app'
+import appReducer from '../shared/reducer/app'
 import helloReducer from '../shared/reducer/hello'
 import navReducer from '../shared/reducer/sidebar-nav'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
@@ -29,10 +32,11 @@ const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  { hello: helloReducer, nav: navReducer }),
+  { app: appReducer, hello: helloReducer, nav: navReducer }),
   { hello: Immutable.fromJS(preloadedState.hello) },
-  composeEnhancers(applyMiddleware(thunkMiddleware)))
+  composeEnhancers(applyMiddleware(thunkMiddleware), autoRehydrate()))
 
+persistStore(store, { transforms: [immutableTransform()] })
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
