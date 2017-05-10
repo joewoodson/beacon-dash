@@ -49,10 +49,10 @@ const App = ({ isAuth }: Props) =>
               </Header>
               <Switch>
                 <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
-                <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
-                <Route exact path={LOGIN_PAGE_ROUTE} render={() => <LoginPage />} />
-                <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
-                <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
+                <Route exact path={HOME_PAGE_ROUTE} component={HomePage} render={() => <HomePage />} />
+                <Route exact path={LOGIN_PAGE_ROUTE} component={LoginPage} render={() => <LoginPage />} />
+                <Route path={HELLO_PAGE_ROUTE} component={HelloPage} render={() => <HelloPage />} />
+                <Route path={HELLO_ASYNC_PAGE_ROUTE} component={HelloAsyncPage} render={() => <HelloAsyncPage />} />
                 <Route component={NotFoundPage} />
               </Switch>
             </Split>
