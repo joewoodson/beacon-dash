@@ -28,6 +28,28 @@ function handleResponse(res, code, statusMsg) {
 }
 
 export default (app: Object) => {
+  // Page Routes -begin
+  app.get(HOME_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, homePage()))
+  })
+
+  app.get(HELLO_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, helloPage()))
+  })
+
+  app.get(HELLO_ASYNC_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, helloAsyncPage()))
+  })
+
+  app.get(LOGIN_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, loginPage()))
+  })
+
+  app.get(helloEndpointRoute(), (req, res) => {
+    res.json(helloEndpoint(req.params.num))
+  })
+  // Page Routes - end
+
   // Auth Routes - begin
   app.post(REGISTER_USER_ROUTE, authHelpers.loginRedirect, (req, res, next) =>
     authHelpers.createUser(req, res)
@@ -69,29 +91,6 @@ export default (app: Object) => {
     handleResponse(res, 200, 'success'),
   )
   // User Routes -end
-
-  // Page Routes -begin
-  app.get(HOME_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, homePage()))
-  })
-
-  app.get(HELLO_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, helloPage()))
-  })
-
-  app.get(HELLO_ASYNC_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, helloAsyncPage()))
-  })
-
-  app.get(LOGIN_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, loginPage()))
-  })
-
-  app.get(helloEndpointRoute(), (req, res) => {
-    res.json(helloEndpoint(req.params.num))
-  })
-
-  // Page Routes - end
 
   app.get('*', (req, res) => {
     res.status(404).send(renderApp(req.url))
