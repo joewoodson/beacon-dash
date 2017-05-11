@@ -2,7 +2,7 @@
 
 export const homePage = () => ({
   nav: { active: true },
-  app: { isAuth: false },
+  app: { isAuth: true },
 })
 
 export const loginPage = () => ({
