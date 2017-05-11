@@ -48,7 +48,7 @@ const App = ({ isAuth }: Props) =>
                 <NavOpenButton icon={<Menu />} />
               </Header>
               <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
-              <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+              <Route exact path={HOME_PAGE_ROUTE} component={<HomePage />} />
               <Route exact path={LOGIN_PAGE_ROUTE} render={() => <LoginPage />} />
               <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
               <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
