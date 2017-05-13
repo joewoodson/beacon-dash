@@ -6,7 +6,7 @@ import Header from 'grommet/components/Header'
 import Helemt from 'react-helmet'
 import Menu from 'grommet/components/icons/base/Menu'
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import Split from 'grommet/components/Split'
 import { Redirect, Switch } from 'react-router'
 
@@ -33,8 +33,8 @@ const mapStateToProps = state => ({
   isAuth: state.app.get('isAuth'),
 })
 
-const App = ({ isAuth = true }: Props) => {
-  const AuthRoute = (
+const App = ({ isAuth }: Props) => {
+  const AuthRoutes = (
     <Split flex="right">
       <SidebarNav />
       <Header
@@ -53,7 +53,7 @@ const App = ({ isAuth = true }: Props) => {
     </Split>
   )
 
-  const UnauthRoute = (
+  const UnauthRoutes = (
     <Route render={() => <LoginPage />} />
   )
 
@@ -61,10 +61,10 @@ const App = ({ isAuth = true }: Props) => {
     <div>
       <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
       <GrommetApp centered={false}>
-        {isAuth ? AuthRoute : UnauthRoute}
+        {isAuth ? AuthRoutes : UnauthRoutes}
       </GrommetApp>
     </div>
   )
 }
 
-export default App
+export default withRouter(connect(mapStateToProps)(App))
