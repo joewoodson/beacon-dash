@@ -33,34 +33,38 @@ const mapStateToProps = state => ({
   isAuth: state.app.get('isAuth'),
 })
 
-const App = ({ isAuth }: Props) =>
-  <div>
-    <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
-    <GrommetApp centered={false}>
-      <Route
-        render={() => (
-          isAuth ? (
-            <Split flex="right">
-              <SidebarNav />
-              <Header
-                pad={{ horizontal: 'small' }}
-              >
-                <NavOpenButton icon={<Menu />} />
-              </Header>
-              <Switch>
-                <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
-                <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
-                <Route exact path={LOGIN_PAGE_ROUTE} render={() => <LoginPage />} />
-                <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
-                <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
-                <Route component={NotFoundPage} />
-              </Switch>
-            </Split>
-        ) : (
-          <Route render={() => <LoginPage />} />
-        ))}
-      />
-    </GrommetApp>
-  </div>
+const App = ({ isAuth }: Props) => {
+  const AuthRoute = (
+    <Split flex="right">
+      <SidebarNav />
+      <Header
+        pad={{ horizontal: 'small' }}
+      >
+        <NavOpenButton icon={<Menu />} />
+      </Header>
+      <Switch>
+        <Redirect exact from="/" to={HOME_PAGE_ROUTE} />
+        <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+        <Route exact path={LOGIN_PAGE_ROUTE} render={() => <LoginPage />} />
+        <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
+        <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Split>
+  )
+
+  const UnauthRoute = (
+    <Route render={() => <LoginPage />} />
+  )
+
+  return (
+    <div>
+      <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
+      <GrommetApp centered={false}>
+        {isAuth ? AuthRoute : UnauthRoute}
+      </GrommetApp>
+    </div>
+  )
+}
 
 export default connect(mapStateToProps)(App)
