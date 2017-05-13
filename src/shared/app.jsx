@@ -61,7 +61,7 @@ const App = ({ isAuth }: Props) => {
     <div>
       <Helemt titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
       <GrommetApp centered={false}>
-        {isAuth ? AuthRoute : UnauthRoute}
+        {AuthRoute}
       </GrommetApp>
     </div>
   )
