@@ -52,4 +52,4 @@ const App = () =>
     </GrommetApp>
   </div>
 
-export default connect(mapStateToProps)(App)
+export default App
